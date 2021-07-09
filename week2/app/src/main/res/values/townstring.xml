@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="townArray">
+        <item>경기도 고양시 일산서구 가좌동</item>
+        <item>경기도 고양시 일산서구 덕이동</item>
+        <item>경기도 파주시 산남동</item>
+        <item>경기도 고양시 일산서구 송포동</item>
+        <item>경기도 파주시 동패동</item>
+        <item>경기도 고양시 일산서구 구산동</item>
+        <item>경기도 고양시 일산서구 법곳동</item>
+        <item>경기도 고양시 일산서구 송산동</item>
+        <item>경기도 고양시 일산서구 대화동</item>
+        <item>경기도 파주시 운정3동</item>
+        <item>경기도 파주시 서패동</item>
+        <item>경기도 파주시 문발동</item>
+        <item>경기도 고양시 일산서구 주엽2동</item>
+        <item>경기도 고양시 일산서구 주엽동</item>
+        <item>경기도 고양시 일산서구 일산1동</item>
+        <item>경기도 고양시 일산서구 탄현동</item>
+        <item>경기도 파주시 목동동</item>
+        <item>경기도 고양시 일산서구 주엽1동</item>
+        <item>경기도 파주시 야당동</item>
+        <item>경기도 고양시 일산서구 일산동</item>
+        <item>경기도 고양시 일산서구 일산3동</item>
+        <item>경기도 파주시 운정2동</item>
+        <item>경기도 고양시 일산선구 일산2동</item>
+        <item>경기도 파주시 다율동</item>
+    </string-array>
+</resources>

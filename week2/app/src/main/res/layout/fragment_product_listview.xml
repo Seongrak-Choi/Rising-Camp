@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/main_tx_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="가좌동"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
+
+    <ImageView
+        android:id="@+id/imgDown"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="7dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/down"
+        app:layout_constraintStart_toEndOf="@id/main_tx_address"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
+
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/setting"
+        app:layout_constraintEnd_toStartOf="@+id/img1"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
+
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/lens"
+        app:layout_constraintEnd_toStartOf="@+id/img2"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="#E6E5E5"
+        app:layout_constraintTop_toBottomOf="@+id/main_tx_address" />
+
+    <ListView
+        android:id="@+id/fragment_listview"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/line1"
+        app:layout_constraintBottom_toBottomOf="parent"
+       />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/main_floating_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@id/guidelineRight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_goneMarginBottom="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#FD761A"
+        android:src="@drawable/ic_baseline_add_24"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="10dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

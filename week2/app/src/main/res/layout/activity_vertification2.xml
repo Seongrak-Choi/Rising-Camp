@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/vertification2_img_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/sign_up"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="#E6E5E5"
+        app:layout_constraintTop_toBottomOf="@+id/vertification2_img_title" />
+
+    <EditText
+        android:id="@+id/vertification2_edt_phoneNum"
+        android:inputType="phone"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        android:background="@drawable/edt_border"
+        android:paddingLeft="20dp"
+        android:hint="휴대폰 번호를 입력해주세요"
+        android:maxLength="11"
+        app:layout_constraintTop_toBottomOf="@+id/line1"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/vertification2_btn_resend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/vertification2_edt_phoneNum"
+        android:backgroundTint="#ff4c5157"
+        android:layout_marginTop="15dp"
+        android:text="인증문자 다시 받기"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/button_round"/>
+
+    <EditText
+        android:id="@+id/vertification2_edt_certification"
+        android:inputType="phone"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        android:background="@drawable/edt_border"
+        android:paddingLeft="20dp"
+        android:hint="인증번호를 입력해주세요"
+        android:maxLength="4"
+        app:layout_constraintTop_toBottomOf="@+id/vertification2_btn_resend"/>
+
+    <TextView
+        android:id="@+id/vertification2_tx_noshare"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/vertification2_edt_certification"
+        android:layout_marginTop="10dp"
+        android:text="어떤 경우에도 타인에게 공유하지 마세요!"/>
+
+
+    <TextView
+        android:id="@+id/vertification2_tx_terms"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/vertification2_tx_noshare"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:text="@string/terms"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/vertification2_btn_agree"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/vertification2_tx_terms"
+        android:layout_marginTop="23dp"
+        android:text="동의하고 시작하기"
+        android:enabled="false"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/button_round"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
