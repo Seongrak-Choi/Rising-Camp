@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cookandroid.carrot_market.databinding.ActivityVertification2Binding
+import com.google.android.material.snackbar.Snackbar
 
 class Vertification2Activity : AppCompatActivity(){
     private lateinit var binding : ActivityVertification2Binding
@@ -19,9 +20,12 @@ class Vertification2Activity : AppCompatActivity(){
         setContentView(binding.root)
 
         var address = intent.getStringExtra("address")
+        var phoneNum = intent.getStringExtra("phoneNum")
 
         var sp = getSharedPreferences("user_data",0)
-        var phoneNum = sp.getString("phoneNum","")
+
+        Snackbar.make(binding.root,"인증번호가 문자로 전송됐습니다. (최대 20초 소요)", Snackbar.LENGTH_SHORT).show()
+
         binding.vertification2EdtPhoneNum.setText(phoneNum.toString())
 
         binding.vertification2BtnAgree.setOnClickListener {

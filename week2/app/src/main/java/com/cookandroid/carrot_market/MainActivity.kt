@@ -3,6 +3,7 @@ package com.cookandroid.carrot_market
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.cookandroid.carrot_market.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
 
         binding.mainBottomNavView.setOnNavigationItemSelectedListener(this)
         setFrag(0)
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
         }
         return false
     }
+
 
     private fun setFrag(fragNum: Int) {
 
@@ -57,6 +60,12 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
 
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        ActivityCompat.finishAffinity(this)
+        System.exit(0)
     }
 
 }

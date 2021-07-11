@@ -3,6 +3,7 @@ package com.cookandroid.carrot_market
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.cookandroid.carrot_market.databinding.ActivityBeginBinding
 
 class BeginActivity : AppCompatActivity(){
@@ -18,5 +19,11 @@ class BeginActivity : AppCompatActivity(){
             startActivity(intent)
 
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        ActivityCompat.finishAffinity(this)
+        System.exit(0)
     }
 }
