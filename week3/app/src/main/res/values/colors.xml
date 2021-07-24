@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="carrot">#FF8029</color>
+    <color name="carrot_highlight">#8FD6712E</color>
+    <color name="myStatusBarColor">#C9CACB</color>
+    <color name="pressed">#DDDDDD</color>
+    <color name="nonpressed">#ffffff</color>
 </resources>

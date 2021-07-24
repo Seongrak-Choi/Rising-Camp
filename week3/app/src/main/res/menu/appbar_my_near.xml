@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/lens"
+        android:icon="@drawable/ic_search_my_near"
+        android:title="menu"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/pencil"
+        android:icon="@drawable/create_my_near4"
+        android:title="search"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/bell"
+        android:icon="@drawable/bell_my_near8"
+        android:title="favorite"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -13,7 +13,6 @@
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
         app:layout_constraintTop_toTopOf="@id/guidelineTop" />
 
-
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
@@ -44,6 +43,8 @@
         android:paddingLeft="20dp"
         android:hint="휴대폰 번호를 입력해주세요"
         android:maxLength="11"
+        android:textCursorDrawable="@drawable/edt_cursor"
+        android:textColorHighlight="@color/carrot_highlight"
         app:layout_constraintTop_toBottomOf="@+id/vertification_img_ment"/>
 
     <androidx.appcompat.widget.AppCompatButton

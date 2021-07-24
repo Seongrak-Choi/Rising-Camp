@@ -10,8 +10,8 @@
         android:layout_height="25dp"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
         app:layout_constraintTop_toTopOf="@id/guidelineTop"
-        android:text="나의 당근"
-        android:textStyle="bold"
+        android:text="@string/my_carrot_title"
+        android:fontFamily="@font/spoqahansansneo_bold"
         android:textSize="20dp"
         android:textColor="@color/black"/>
 
@@ -69,7 +69,6 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:paddingRight="20dp"
-            android:paddingLeft="20dp"
             android:src="@drawable/my_carrot_2"/>
 
         <View
@@ -84,7 +83,6 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:paddingRight="20dp"
-            android:paddingLeft="20dp"
             android:src="@drawable/my_carrot_3"/>
 
         <View
@@ -99,7 +97,6 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:paddingRight="20dp"
-            android:paddingLeft="20dp"
             android:src="@drawable/my_carrot_4"/>
 
         </LinearLayout>
@@ -110,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="10dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineRight"

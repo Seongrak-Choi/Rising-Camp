@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="18dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/item_my_near_grid_img"
+        android:layout_width="38dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_edt_search2"
+        tools:background="@color/carrot"/>
+
+    <TextView
+        android:id="@+id/item_my_near_grid_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_my_near_grid_img"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/spoqahansansneo_medium"
+        android:textSize="13sp"
+        tools:text="쿠폰북"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

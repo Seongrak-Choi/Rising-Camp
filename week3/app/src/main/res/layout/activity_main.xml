@@ -7,26 +7,27 @@
     android:padding="5dp"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/main_frame"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/main_viewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/main_bottom_nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/main_bottom_nav_view"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:menu="@menu/main_bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:itemIconTint="@drawable/bottom_nav_view_select_color"
-        app:itemTextColor="@drawable/bottom_nav_view_select_color"/>
+        app:itemTextColor="@drawable/bottom_nav_view_select_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/main_bottom_nav_menu" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLeft"

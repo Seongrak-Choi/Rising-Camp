@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fragment_my_near_grid_cardview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        app:cardCornerRadius="7dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/fragment_my_near_img"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@drawable/background_rounding"
+            android:src="@drawable/my_near_news_img1" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/fragment_my_near_news_tx1_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="17dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="~녹지속 공간이야기~~~일산의 장점입니다."
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toEndOf="@+id/fragment_my_near_grid_cardview1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fragment_my_near_news_tx1_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/spoqahansansneo_medium"
+        android:maxLines="2"
+        android:text="오늘은 코로나 4차적용 첫날입니다~ 거리는 유난히 사람들이 줄었습니다. 무엇보다 상황이 좋지"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toEndOf="@+id/fragment_my_near_grid_cardview1"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_my_near_news_tx1_1" />
+
+    <ImageView
+        android:id="@+id/fragment_my_near_news_profile_img"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="9dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/my_near_news_profile_img1"
+        app:layout_constraintStart_toEndOf="@id/fragment_my_near_grid_cardview1"
+        app:layout_constraintTop_toBottomOf="@id/fragment_my_near_news_tx1_2" />
+
+    <TextView
+        android:id="@+id/fragment_my_near_news_profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/spoqahansansneo_regular"
+        android:text="공간이야기"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/fragment_my_near_news_profile_img"
+        app:layout_constraintTop_toBottomOf="@id/fragment_my_near_news_tx1_2" />
+
+    <TextView
+        android:id="@+id/item_my_near_news_tx_town"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="대화동"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_my_near_news_profile_name"
+        app:layout_constraintStart_toEndOf="@id/fragment_my_near_news_profile_name" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="25dp"
+        android:background="#E6E5E5"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_my_near_grid_cardview1" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="10dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="10dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

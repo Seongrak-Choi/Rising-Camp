@@ -27,6 +27,7 @@ class IntroActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         },1000)
+
     }
 
     override fun onPause() {
