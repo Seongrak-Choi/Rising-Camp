@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="350dp"
+    android:layout_height="160dp">
+
+    <TextView
+        android:id="@+id/dialog_sys_setting_tx_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="로그아웃"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        android:fontFamily="@font/spoqahansansneo_medium"/>
+
+    <TextView
+        android:id="@+id/dialog_sys_setting_tx_contents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_sys_setting_tx_title"
+        android:text="로그아웃 하시겠습니까?"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:fontFamily="@font/spoqahansansneo_medium"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dialog_sys_setting_btn_negative"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/dialog_sys_setting_btn_positive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="취소"
+        android:background="@null"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/spoqahansansneo_medium"
+        android:textColor="@color/carrot"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dialog_sys_setting_btn_positive"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@null"
+        android:text="확인"
+        android:fontFamily="@font/spoqahansansneo_medium"
+        android:textColor="@color/carrot"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

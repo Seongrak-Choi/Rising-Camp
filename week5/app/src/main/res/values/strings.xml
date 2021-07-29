@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Carrot_Market</string>
+    <string name="vertification_tx_ment">전화번호가 변경되었나요? <u>이메일로 계정찾기</u></string>
+    <string name="terms"><u>이용약관</u> 및 <u>개인정보취급방침</u></string>
+    <string name="my_carrot_title"><b>나의 당근</b></string>
+    <string name="naver_client_id">3BFbmAAnLb89AvnSVsbC</string>
+    <string name="naver_client_secret">76UqsUEKwK</string>
+    <string name="naver_client_name">라이징 캠프 당근마켓</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="address">
+        <item>내 동네 찾기</item>
+    </string-array>
+</resources>

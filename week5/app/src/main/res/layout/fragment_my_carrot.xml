@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/my_carrot_tx_title"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop"
+        android:text="@string/my_carrot_title"
+        android:fontFamily="@font/spoqahansansneo_bold"
+        android:textSize="20dp"
+        android:textColor="@color/black"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/my_carrot_btn_setting"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
+        app:layout_constraintRight_toRightOf="@id/guidelineRight"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/my_carrot_setting"/>
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="#E6E5E5"
+        app:layout_constraintTop_toBottomOf="@+id/my_carrot_tx_title" />
+
+    <ScrollView
+        android:id="@+id/my_carrot_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/line1"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:src="@drawable/my_carrot_1"/>
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="400dp"
+            android:layout_height="7dp"
+            android:layout_marginTop="15dp"
+            android:background="#F3F3F3"/>
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:paddingRight="20dp"
+            android:src="@drawable/my_carrot_2"/>
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_marginTop="15dp"
+            android:background="#F3F3F3"/>
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:paddingRight="20dp"
+            android:src="@drawable/my_carrot_3"/>
+
+        <View
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_marginTop="15dp"
+            android:background="#F3F3F3"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:paddingRight="20dp"
+            android:src="@drawable/my_carrot_4"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="10dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="10dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

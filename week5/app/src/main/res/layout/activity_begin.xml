@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff8f9fb"
+    tools:context=".activity.MainActivity">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/login_begin" />
+
+    <FrameLayout
+        android:id="@+id/begin_frame_img1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="130dp">
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/carrot_logo" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/begin_frame_img2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/begin_frame_start"
+        app:layout_constraintTop_toBottomOf="@+id/begin_frame_img1"
+        android:layout_marginTop="250dp">
+
+        <ImageView
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/carrot_ment"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/begin_frame_start"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/begin_frame_img2"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Begin_btn_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:background="@drawable/button_round"
+            android:text="내 동네 설정하고 시작하기"/>
+    </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/begin_Linear_naver"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/begin_frame_start"
+            android:background="@drawable/layout_background"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/naver_logo"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="네이버 아이디로 로그인"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
