@@ -1,6 +1,7 @@
 package com.cookandroid.carrot_market.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -39,6 +40,7 @@ class FragmentProductListView : Fragment(){
     private var aladinBookList = mutableListOf<BookItem>()
     lateinit var binding : FragmentProductListviewBinding
     private lateinit var productAdapter: ProductAdapter
+    val aladinBookInterface = RetrofitClient.aladinBookClient.create(AladinBookInterface::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,14 +71,20 @@ class FragmentProductListView : Fragment(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                if(!binding.fragmentRecyclerView.canScrollVertically(1)){ // 아래로 스크롤이 더 이상 되지 않을 때
+                val lastVisibleItemPosition =
+                    (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
+                val itemTotalCount = recyclerView.adapter!!.itemCount-1
+
+
+                if(!binding.fragmentRecyclerView.canScrollVertically(1)&&lastVisibleItemPosition==itemTotalCount){ // 아래로 스크롤이 더 이상 되지 않을 때
                     if(PAGE<50) PAGE++
                     productAdapter.deleteLoading()
 
                     var addList = mutableListOf<BookItem>()
 
-                    val aladinBookInterface = RetrofitClient.aladinBookClient.create(AladinBookInterface::class.java)
-                    aladinBookInterface.getBookBestseller("20:", PAGE.toString(),
+                    var handler = android.os.Handler()
+                    handler.postDelayed({
+                        aladinBookInterface.getBookBestseller("20", PAGE.toString(),
                         "Book",ALADIN_API.VERSION,ALADIN_API.CLIENT_KEY,"Bestseller","js").enqueue(
                         object : Callback<AladinBookInfo> {
                             override fun onResponse(call: Call<AladinBookInfo>, response: Response<AladinBookInfo>) {
@@ -97,9 +105,15 @@ class FragmentProductListView : Fragment(){
                             }
 
                         })
+                    },1000)
                 }
             }
         })
+
+        binding.fragmentProductListBtnSearch.setOnClickListener {
+            var intent = Intent(context,SearchActivity::class.java)
+            startActivity(intent)
+        }
 
         return binding.root
     }
@@ -157,8 +171,6 @@ class FragmentProductListView : Fragment(){
 
     //알라딘에서 책 정보 API받아오는 함수
     private fun getBookData(maxResult:String,start:String,searchTarget:String,version:String,ttbkey:String,queryType:String,output:String){
-        val aladinBookInterface = RetrofitClient.aladinBookClient.create(AladinBookInterface::class.java)
-
         aladinBookInterface.getBookBestseller(maxResult,start,searchTarget,version,ttbkey,queryType,output).enqueue(
             object : Callback<AladinBookInfo> {
                 override fun onResponse(call: Call<AladinBookInfo>, response: Response<AladinBookInfo>) {

@@ -15,6 +15,7 @@
         <activity android:name=".activity.Vertification2Activity"/>
         <activity android:name=".activity.AddressActivity"/>
         <activity android:name=".activity.BeginActivity"/>
+        <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.SystemSettingActivity"/>
         <activity android:name=".activity.IntroActivity">
             <intent-filter>
@@ -24,5 +25,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
