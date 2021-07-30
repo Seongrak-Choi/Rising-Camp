@@ -28,6 +28,8 @@ class IntroActivity : AppCompatActivity() {
             }
         },1000)
 
+        
+
     }
 
     override fun onPause() {

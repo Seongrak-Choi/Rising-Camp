@@ -13,21 +13,34 @@ import java.text.NumberFormat
 import java.util.*
 
 class ProductAdapter(private val ProductList:MutableList<BookItem>) :
-    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding =
-            ItemProductListViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-        return ViewHolder(binding)
+    private val VIEW_TYPE_LOADING = 0
+    private val VIEW_TYPE_ITEM = 1
+    private lateinit var showList : MutableList<BookItem>
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when(viewType){
+            VIEW_TYPE_ITEM ->{
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemProductListViewBinding.inflate(layoutInflater,parent,false)
+                ViewHolder(binding)
+            }
+            else ->{
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemLoadingBinding.inflate(layoutInflater,parent,false)
+                LoadingViewHolder(binding)
+            }
+        }
     }
 
-//    override fun getItemViewType(position: Int): Int {
-//        return when (ProductList[position].)
-//    }
+    override fun getItemViewType(position: Int): Int {
+        return when (ProductList[position].title){
+            " "-> VIEW_TYPE_LOADING
+            else -> VIEW_TYPE_ITEM
+        }
+    }
     override fun getItemCount(): Int = ProductList.size
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(ProductList[position])
-    }
 
     inner class ViewHolder(val binding: ItemProductListViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -47,9 +60,24 @@ class ProductAdapter(private val ProductList:MutableList<BookItem>) :
             }
     }
 
-    inner class LoadingViewHolder(private val binding:ItemLoadingBinding) : RecyclerView.ViewHolder(binding.root){
-
+    inner class LoadingViewHolder(private val binding:ItemLoadingBinding) :
+        RecyclerView.ViewHolder(binding.root){
     }
 
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if(holder is ViewHolder){
+            holder.bind(ProductList[position])
+        }else{
+
+        }
+    }
+
+    fun setList(addList:MutableList<BookItem>){
+        ProductList.addAll(addList)
+    }
+
+    fun deleteLoading(){
+        ProductList.removeAt(ProductList.lastIndex)
+    }
 }
 

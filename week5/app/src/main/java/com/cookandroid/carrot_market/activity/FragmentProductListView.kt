@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.carrot_market.R
 import com.cookandroid.carrot_market.`interface`.AladinBookInterface
 import com.cookandroid.carrot_market.`interface`.WeatherInterface
@@ -31,13 +32,20 @@ import retrofit2.Response
 
 class FragmentProductListView : Fragment(){
 
+    companion object{
+        private var PAGE = 0
+    }
     val productList = ArrayList<ProductInfo>(5)
-    private var aladinBookList = ArrayList<BookItem>()
+    private var aladinBookList = mutableListOf<BookItem>()
     lateinit var binding : FragmentProductListviewBinding
+    private lateinit var productAdapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getBookData("20","1","Book",ALADIN_API.VERSION,ALADIN_API.CLIENT_KEY,"Bestseller","js")
+        if(PAGE<50){
+            PAGE++
+        }
+        getBookData("20",PAGE.toString(),"Book",ALADIN_API.VERSION,ALADIN_API.CLIENT_KEY,"Bestseller","js")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -46,16 +54,52 @@ class FragmentProductListView : Fragment(){
 
         var sp = activity?.getSharedPreferences("user_data",0)
         var town = sp?.getString("town","")
-        binding.mainTxAddress.setText(town)
+        binding.mainTxAddress.text = town
 
         var handler = Handler(Looper.getMainLooper()) //api를 호출할 때 ui를 변경할 수 있도록 핸들러를 선언
 
         //현재 고양시의 온도를 받아오는 API호출
-        Thread(){
+        Thread {
             handler.post{
                 getWeatherData("Goyang",OPEN_WHEATHER_API.CLIENT_KEY)
             }
         }.start()
+
+        binding.fragmentRecyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                if(!binding.fragmentRecyclerView.canScrollVertically(1)){ // 아래로 스크롤이 더 이상 되지 않을 때
+                    if(PAGE<50) PAGE++
+                    productAdapter.deleteLoading()
+
+                    var addList = mutableListOf<BookItem>()
+
+                    val aladinBookInterface = RetrofitClient.aladinBookClient.create(AladinBookInterface::class.java)
+                    aladinBookInterface.getBookBestseller("20:", PAGE.toString(),
+                        "Book",ALADIN_API.VERSION,ALADIN_API.CLIENT_KEY,"Bestseller","js").enqueue(
+                        object : Callback<AladinBookInfo> {
+                            override fun onResponse(call: Call<AladinBookInfo>, response: Response<AladinBookInfo>) {
+                                if(response.isSuccessful){
+                                    val result = response.body() as AladinBookInfo
+                                    for(i in result.bookItem){
+                                        addList.add(i)
+                                    }
+                                    addList.add(BookItem(" "," "," "," "," "," "," "," "," "))
+                                    productAdapter.setList(addList)
+                                    productAdapter.notifyItemRangeInserted(PAGE*20,20)
+                                }else{
+                                    Log.d("MainActivity","getBookBestseller - onResponse : Error code ${response.errorBody()}")
+                                }
+                            }
+                            override fun onFailure(call: Call<AladinBookInfo>, t: Throwable) {
+                                Log.d("MainActivity",t.message ?: "통신오류")
+                            }
+
+                        })
+                }
+            }
+        })
 
         return binding.root
     }
@@ -114,17 +158,19 @@ class FragmentProductListView : Fragment(){
     //알라딘에서 책 정보 API받아오는 함수
     private fun getBookData(maxResult:String,start:String,searchTarget:String,version:String,ttbkey:String,queryType:String,output:String){
         val aladinBookInterface = RetrofitClient.aladinBookClient.create(AladinBookInterface::class.java)
+
         aladinBookInterface.getBookBestseller(maxResult,start,searchTarget,version,ttbkey,queryType,output).enqueue(
             object : Callback<AladinBookInfo> {
                 override fun onResponse(call: Call<AladinBookInfo>, response: Response<AladinBookInfo>) {
                     if(response.isSuccessful){
                         val result = response.body() as AladinBookInfo
                         for(i in result.bookItem){
-                            println("과연 제대로 for문을 도나? : ${i.title}")
                             aladinBookList.add(i)
-                            binding.fragmentRecyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false) //리사이클러뷰에 레이아웃매니저를 부착
-                            binding.fragmentRecyclerView.adapter = ProductAdapter(aladinBookList) //리사이클러뷰에 어댑터를 부착
                         }
+                        aladinBookList.add(BookItem(" "," "," "," "," "," "," "," "," "))
+                        binding.fragmentRecyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false) //리사이클러뷰에 레이아웃매니저를 부착
+                        productAdapter= ProductAdapter(aladinBookList)
+                        binding.fragmentRecyclerView.adapter =productAdapter //리사이클러뷰에 어댑터를 부착
                     }else{
                         Log.d("MainActivity","getBookBestseller - onResponse : Error code ${response.errorBody()}")
                     }

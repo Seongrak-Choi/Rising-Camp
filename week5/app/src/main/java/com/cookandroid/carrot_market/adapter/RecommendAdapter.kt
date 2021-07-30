@@ -30,7 +30,7 @@ class RecommendAdapter(private var recommendList : ArrayList<RecommendInfo>) :
             binding.itemMyNearRecommendTxTitle.text=data.getTitle()
             binding.itemMyNearRecommendTxSubtitle.text=data.getSubTitle()
             binding.itemMyNearRecommendTxPostscript.text = "후기 ${data.getPostscriptCount()}"
-            binding.itemMyNearRecommendTxPatron.setText(Html.fromHtml("   &middot 단골 ${data.getPatron()}"))
+            binding.itemMyNearRecommendTxPatron.text = Html.fromHtml("   &middot 단골 ${data.getPatron()}")
             binding.itemMyNearRecommendTxContents.text=Html.fromHtml("<b>${data.getNickName()}님</b> ${data.getContents()}")
         }
     }

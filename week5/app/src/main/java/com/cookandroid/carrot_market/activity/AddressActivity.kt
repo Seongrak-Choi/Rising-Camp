@@ -33,7 +33,7 @@ class AddressActivity : AppCompatActivity(){
         for(i in 0..23){
             var key="index"+i
             var str = sp.getString(key,"").toString()
-            var str_split = str?.split(",")
+            var str_split = str.split(",")
             townArray.add(AddressInfo(str_split[0],str_split[1]))
         }
 
