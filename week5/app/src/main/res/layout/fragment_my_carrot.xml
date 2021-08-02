@@ -59,17 +59,109 @@
 
         <View
             android:id="@+id/line2"
-            android:layout_width="400dp"
+            android:layout_width="match_parent"
             android:layout_height="7dp"
             android:layout_marginTop="15dp"
             android:background="#F3F3F3"/>
 
-        <ImageView
-            android:layout_width="400dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:paddingRight="20dp"
-            android:src="@drawable/my_carrot_2"/>
+            android:paddingTop="20dp"
+            android:paddingBottom="15dp"
+            android:background="@drawable/button_white_lightgray"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="18dp"
+                android:src="@drawable/img_marker"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:text="내 동네 설정"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/spoqahansansneo_medium"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_my_carrot_town_vertification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:background="@drawable/button_white_lightgray"
+                android:paddingBottom="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/img_aim"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="동네 인증하기"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/spoqahansansneo_medium"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/button_white_lightgray"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/img_label"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="키워드 알림"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/spoqahansansneo_medium"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/button_white_lightgray"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/img_collection"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="모아보기"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/spoqahansansneo_medium"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
 
         <View
             android:id="@+id/line3"

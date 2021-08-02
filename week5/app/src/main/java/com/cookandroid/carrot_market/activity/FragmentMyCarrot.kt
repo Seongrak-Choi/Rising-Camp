@@ -18,6 +18,11 @@ class FragmentMyCarrot : Fragment() {
             startActivity(intent)
         }
 
+        binding.fragmentMyCarrotTownVertification.setOnClickListener {
+            var intent = Intent(context,TownVertificationActivity::class.java)
+            startActivity(intent)
+        }
+
         return binding.root
     }
 

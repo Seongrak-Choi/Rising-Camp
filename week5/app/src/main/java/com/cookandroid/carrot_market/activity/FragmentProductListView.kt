@@ -33,26 +33,24 @@ import retrofit2.Response
 
 class FragmentProductListView : Fragment(){
 
-    companion object{
-        private var PAGE = 0
-    }
     val productList = ArrayList<ProductInfo>(5)
     private var aladinBookList = mutableListOf<BookItem>()
     lateinit var binding : FragmentProductListviewBinding
     private lateinit var productAdapter: ProductAdapter
     val aladinBookInterface = RetrofitClient.aladinBookClient.create(AladinBookInterface::class.java)
+    private var PAGE = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(PAGE<50){
-            PAGE++
-        }
-        getBookData("20",PAGE.toString(),"Book",ALADIN_API.VERSION,ALADIN_API.CLIENT_KEY,"Bestseller","js")
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding= FragmentProductListviewBinding.inflate(layoutInflater)
         binding.mainFloatingBtn.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white)) //floatingButton의 아이콘 색상을 변경
+
+        PAGE=0
+        aladinBookList.clear()
 
         var sp = activity?.getSharedPreferences("user_data",0)
         var town = sp?.getString("town","")
@@ -67,6 +65,19 @@ class FragmentProductListView : Fragment(){
             }
         }.start()
 
+        //알라딘에서 베스트 셀러를 호출하는 함수를 실행
+        Thread {
+            if(PAGE<50){
+                PAGE++
+            }
+            handler.post{
+                getBookData("10",PAGE.toString(),"Book",ALADIN_API.VERSION,ALADIN_API.CLIENT_KEY,"Bestseller","js")
+            }
+        }.start()
+
+
+
+        //스크롤이 더 이상 아래로 내렬갈 곳이 없을 때 동작하는 리스너
         binding.fragmentRecyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -76,7 +87,7 @@ class FragmentProductListView : Fragment(){
                 val itemTotalCount = recyclerView.adapter!!.itemCount-1
 
 
-                if(!binding.fragmentRecyclerView.canScrollVertically(1)&&lastVisibleItemPosition==itemTotalCount){ // 아래로 스크롤이 더 이상 되지 않을 때
+                if(!binding.fragmentRecyclerView.canScrollVertically(1)&&lastVisibleItemPosition==itemTotalCount){ // 아래로 스크롤이 더 이상 되지 않을 때 -1은 위로 안될때
                     if(PAGE<50) PAGE++
                     productAdapter.deleteLoading()
 
@@ -84,7 +95,7 @@ class FragmentProductListView : Fragment(){
 
                     var handler = android.os.Handler()
                     handler.postDelayed({
-                        aladinBookInterface.getBookBestseller("20", PAGE.toString(),
+                        aladinBookInterface.getBookBestseller(ALADIN_API.BESTSELLER_MAX_RESULTS, PAGE.toString(),
                         "Book",ALADIN_API.VERSION,ALADIN_API.CLIENT_KEY,"Bestseller","js").enqueue(
                         object : Callback<AladinBookInfo> {
                             override fun onResponse(call: Call<AladinBookInfo>, response: Response<AladinBookInfo>) {
@@ -95,7 +106,7 @@ class FragmentProductListView : Fragment(){
                                     }
                                     addList.add(BookItem(" "," "," "," "," "," "," "," "," "))
                                     productAdapter.setList(addList)
-                                    productAdapter.notifyItemRangeInserted(PAGE*20,20)
+                                    productAdapter.notifyItemRangeInserted((PAGE*20)-10,20)
                                 }else{
                                     Log.d("MainActivity","getBookBestseller - onResponse : Error code ${response.errorBody()}")
                                 }
@@ -103,7 +114,6 @@ class FragmentProductListView : Fragment(){
                             override fun onFailure(call: Call<AladinBookInfo>, t: Throwable) {
                                 Log.d("MainActivity",t.message ?: "통신오류")
                             }
-
                         })
                     },1000)
                 }
@@ -117,17 +127,6 @@ class FragmentProductListView : Fragment(){
 
         return binding.root
     }
-
-//    override fun onStart(){ //해당 프래그먼트가 화면에 나올때 마다 리스트를 새로고침하기 위해 onStart()에서 리스트뷰 부착
-//        super.onStart()
-//        activity?.runOnUiThread { //onStart()에서는 UI변경이 불가능하기 때문에 runOnUiThread를 사용해 UI를 변경해 준다.
-//            var productListShuffle = ArrayList<ProductInfo>() //섞인 ArrayList를 저장할 변수 선언
-//            productListShuffle.addAll(productList.shuffled()) // 셔플된 리스트를 위에서 만든 변수에 저장함.
-//
-//            binding.fragmentRecyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false) //리사이클러뷰에 레이아웃매니저를 부착
-//            binding.fragmentRecyclerView.adapter = ProductAdapter(productListShuffle) //리사이클러뷰에 어댑터를 부착
-//        }
-//    }
 
     //고양시의 날씨 API를 받아오는 함수
     private fun getWeatherData(city:String, key:String){

@@ -3,6 +3,9 @@
     package="com.cookandroid.carrot_market">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +20,7 @@
         <activity android:name=".activity.BeginActivity"/>
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.SystemSettingActivity"/>
+        <activity android:name=".activity.TownVertificationActivity"/>
         <activity android:name=".activity.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

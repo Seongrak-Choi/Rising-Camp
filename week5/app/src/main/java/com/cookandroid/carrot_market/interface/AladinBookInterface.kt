@@ -8,7 +8,9 @@ import retrofit2.http.Query
 
 interface AladinBookInterface {
     @GET("ItemSearch.aspx")
-    fun getBookSearch(@Query("q") q:String, @Query("appid") appid:String) : Call<AladinBookInfo>
+    fun getBookSearch(@Query("ttbkey") ttbkey:String,@Query("Query") Query:String, @Query("QueryType") QueryType:String,
+                      @Query("MaxResults") MaxResults:String, @Query("start") start:String,@Query("SearchTarget") SearchTarget:String,
+                      @Query("output") output:String, @Query("Version") Version:String) : Call<AladinBookInfo>
 
     @GET("ItemList.aspx")
     fun getBookBestseller(@Query("MaxResults") MaxResults:String, @Query("start") start:String,

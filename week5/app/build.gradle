@@ -22,6 +22,9 @@ android {
         enabled=true
     }
 
+    dataBinding { enabled = true }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -48,8 +51,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
-    //
-
 
     //네이버로 로그인
     implementation files('libs/naveridlogin_android_sdk_4.2.6.aar')
@@ -57,6 +58,13 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
     implementation 'androidx.browser:browser:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //네이버 지도 SDK
+    implementation("com.naver.maps:map-sdk:3.12.0")
+
+
+    //FusedLocationSource를 사용하기 위한 라이브러리 추가, 네이버 지도에 현재 위치를 마커로 달기 위함.
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 
     //gson
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'

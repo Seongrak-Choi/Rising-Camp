@@ -4,11 +4,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager.widget.ViewPager
 import com.cookandroid.carrot_market.R
 import com.cookandroid.carrot_market.adapter.MainPagerAdapter
 import com.cookandroid.carrot_market.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
+private const val TAG_HOME_FRAGMENT = "fragment_product_listview"
+private const val TAG_TOWN_LIFE_FRAGMENT = "fragment_town_life"
+private const val TAG_NEAR_FRAGMENT = "fragment_my_near"
+private const val TAG_CHAT_FRAGMENT = "fragment_chatting"
+private const val TAG_CARROT_FRAGMENT = "fragment_my_carrot"
 
 class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -44,7 +53,6 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
 
     }
 
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.menu_home ->{
@@ -71,6 +79,70 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
         return false
     }
 
+//    private fun setFragment(tag:String, fragment:Fragment){
+//        val manager: FragmentManager = supportFragmentManager
+//        val ft:FragmentTransaction = manager.beginTransaction()
+//
+//        if(manager.findFragmentByTag(tag)==null){
+//            ft.add(R.id.main_viewPager,fragment,tag)
+//        }
+//
+//        val home = manager.findFragmentByTag(TAG_HOME_FRAGMENT)
+//        val town = manager.findFragmentByTag(TAG_TOWN_LIFE_FRAGMENT)
+//        val near = manager.findFragmentByTag(TAG_NEAR_FRAGMENT)
+//        val chat = manager.findFragmentByTag(TAG_CHAT_FRAGMENT)
+//        val carrot = manager.findFragmentByTag(TAG_CARROT_FRAGMENT)
+//
+//        if(home !=null){
+//            ft.hide(home)
+//        }
+//        if(town != null){
+//            ft.hide(town)
+//        }
+//        if(near != null){
+//            ft.hide(near)
+//        }
+//        if(chat != null){
+//            ft.hide(chat)
+//        }
+//        if(carrot != null){
+//            ft.hide(carrot)
+//        }
+//
+//        if (tag == TAG_HOME_FRAGMENT) {
+//            if (home != null) {
+//                ft.show(home)
+//            }
+//        }
+//        if (tag == TAG_TOWN_LIFE_FRAGMENT) {
+//            if (town != null) {
+//                ft.show(town)
+//            }
+//        }
+//        if (tag == TAG_NEAR_FRAGMENT) {
+//            if (near != null) {
+//                ft.show(near)
+//            }
+//        }
+//        if (tag == TAG_CHAT_FRAGMENT) {
+//            if (chat != null) {
+//                ft.show(chat)
+//            }
+//        }
+//        if (tag == TAG_CARROT_FRAGMENT) {
+//            if (carrot != null) {
+//                ft.show(carrot)
+//            }
+//        }
+//        ft.commitAllowingStateLoss()
+//    }
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        ActivityCompat.finishAffinity(this)
+        System.exit(0)
+    }
 
 //    private fun setFrag(fragNum: Int) {
 //
@@ -95,10 +167,6 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
 //        }
 //    }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        ActivityCompat.finishAffinity(this)
-        System.exit(0)
-    }
+
 
 }

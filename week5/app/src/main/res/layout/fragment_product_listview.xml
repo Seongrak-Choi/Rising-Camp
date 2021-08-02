@@ -74,14 +74,15 @@
 
     <ImageButton
         android:id="@+id/fragment_product_list_btn_search"
-        android:layout_width="45dp"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginRight="25dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:backgroundTint="@color/white"
-        android:src="@drawable/lens"
+        android:src="@drawable/img_search"
+        android:padding="0dp"
         app:layout_constraintEnd_toStartOf="@+id/img2"
         app:layout_constraintTop_toTopOf="@id/guidelineTop" />
 

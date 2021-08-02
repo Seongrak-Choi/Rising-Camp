@@ -12,3 +12,9 @@ object ALADIN_API{
     const val VERSION : String = "20131101"
     const val BESTSELLER_MAX_RESULTS="20"
 }
+
+
+object NAVER_MAP_API{
+    const val CLINET_ID : String = "s5hfqmvp1o"
+    const val CLIENT_SECRET : String = "gCrBzSdAfQr4tL28vjFpHN4tkdjYoODDflVijtBc"
+}
