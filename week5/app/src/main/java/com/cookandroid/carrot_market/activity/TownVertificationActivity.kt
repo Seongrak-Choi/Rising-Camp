@@ -93,8 +93,6 @@ class TownVertificationActivity : FragmentActivity(), OnMapReadyCallback{
             toast.show()
             this.finish()
         }
-
-
     }
 
     @UiThread
